@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeros pasos</title>
+</head>
+<body>
+    <h1 id="titulo">Este es el título</h1>
+    <p id="parrafo">Este es el contenido de un párrafo</p>
+    <div>
+        <input id="btnTitulo" type="button" value="Cambia el titular">
+        <!--
+            <input id="btnParrafo" type="button"  onclick="alert('evento en línea')"value="Cambia el párrafo">
+        -->
+        <input id="btnParrafo" type="button" value="Cambia el párrafo">
+        <input id="btnImagen" type="button" value="Cambia la imagen">
+    </div>
+    <img id="foto" height="250" src="asset/gatito1.webp"/>
+
+    <script>
+        //objeto.addEventListener('tipo', funcion [, fase] )
+        document.getElementById('btnTitulo').addEventListener('click', cambiaTitular);
+        document.getElementById('btnParrafo').addEventListener('click', cambiaParrafo);
+        document.getElementById('btnImagen').addEventListener('click', cambiaImagen);
+
+
+        let i=0;
+        function cambiaTitular(){
+            //alert('hola');
+            document.getElementById('titulo').innerHTML='Título cambiado ' + i++;
+        }
+
+        function cambiaParrafo(){
+            const $parrafo = document.getElementById('parrafo');
+            if ($parrafo.innerHTML==='Este es el contenido de un párrafo') {
+                $parrafo.innerHTML = "Este es otro contenido para un párrafo";
+            }
+            else {
+                $parrafo.innerHTML = 'Este es el contenido de un párrafo';
+            }
+        }
+
+        const gatitos = [
+                            "asset/gatito1.webp",
+                            "asset/gatito2.jpg",
+                            "asset/gatito3.jpg",
+                            "asset/gatito4.webp",
+                        ];
+
+        let g=0;
+        function cambiaImagen(){
+            document.getElementById('foto').src=gatitos[++g%gatitos.length];
+        }
+
+        // document.getElementById('btnTitulo').onclick=cambiaTitular; //evento on...
+    </script>
+</body>
+</html>

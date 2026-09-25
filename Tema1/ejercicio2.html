@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario</title>
+</head>
+<body>
+    <h1>Haz clic en verdadero o falso</h1>
+    <div>
+        <p data-verdadero="true">Las galletas se ponen blandas al mojarse</p>
+        <input type="button" value="Verdadero"/>
+        <input type="button" value="Falso"/>
+    </div>
+    <div>
+        <p data-verdadero="false">La Luna es más grande que el Sol</p>
+        <input type="button" value="Verdadero"/>
+        <input type="button" value="Falso"/>
+    </div>
+    <div>
+        <p data-verdadero="false">Shakira canta "Los pajaritos"</p>
+        <input type="button" value="Verdadero"/>
+        <input type="button" value="Falso"/>
+    </div>
+
+    <script>
+       /* const botones = document.getElementsByTagName('input');
+
+        for (let i=0; i<botones.length; i++){
+            botones[i].addEventListener('click', comprobarRespuesta);
+        }
+        */
+
+        document.addEventListener('click', comprobarRespuesta);
+
+        function comprobarRespuesta(evento){
+            //Por delegación de eventos, salgo si no es un botón
+            if (evento.target.tagName!="INPUT") return;
+
+            const boton = evento.target;
+            //console.log(evento.target);
+            //console.log(evento.currentTarget);
+            const parrafo = evento.target.parentElement.firstElementChild;
+            //console.log(parrafo.dataset.verdadero);
+            //console.log(boton.value);
+            
+            if (parrafo.dataset.verdadero == "true"){
+                if (boton.value=="Verdadero") {
+                    parrafo.style.color = "green";
+                }
+                else {
+                    parrafo.style.color = "red";
+                }
+            }
+            else if (parrafo.dataset.verdadero == "false"){
+                if (boton.value=="Falso") {
+                    parrafo.style.color = "green";
+                }
+                else {
+                    parrafo.style.color = "red";
+                }
+            }
+            else {
+                alert("error: el párrafo no cumple con los requisitos del programa")
+            }
+
+        }
+
+    </script>
+    
+</body>
+</html>
