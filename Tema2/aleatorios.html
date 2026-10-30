@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<script>
+"use strict";
+
+/*
+Valor aleatorio en un rango en valores reales 
+entre el número min sin llegar al número max
+*/
+
+function random(min, max) {
+  return min + Math.random() * (max - min);
+}
+
+const resul={
+  v1:0,
+  v2:0,
+  v3:0,
+  v4:0
+  };
+for (let i=0;i<10000000;i++){
+    let a = random(1,5);
+    if (a<2)        resul.v1++; // entre 1.0 y 1.99999...
+    else if (a<3)   resul.v2++; // entre 2.0 y 2.99999...
+    else if (a<4)   resul.v3++; // entre 3.0 y 3.99999...
+    else            resul.v4++; // entre 4.0 y 4.99999...
+}
+
+console.dir(resul);
+
+
+/*
+Valor aleatorio con rangos en valores enteros
+- hay que tener en cuenta sumar 1 al rango para poder obtener valores con el máximo incluido
+- con el truncado queda más fácil
+*/
+
+function randomInteger(min, max) {
+  let real = min + Math.random() * (1+ max - min);
+  return Math.trunc(real);
+}
+
+const resulEnteros={
+  v1:0,
+  v2:0,
+  v3:0,
+  v4:0,
+  v5:0
+  };
+  
+for (let i=0;i<10000000;i++){
+    let a = randomInteger(1,5);
+    if (a==1)        resulEnteros.v1++;
+    else if (a==2)   resulEnteros.v2++;
+    else if (a==3)   resulEnteros.v3++;
+    else if (a==4)   resulEnteros.v4++;
+    else             resulEnteros.v5++;
+}
+
+console.dir(resulEnteros);
+</script>
