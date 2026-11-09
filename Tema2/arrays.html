@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos de los arrays</title>
+</head>
+<body>
+    <h1>Vamos a implementar nuestra versión del método forEach</h1>
+    <h2>primero como una función suelta y luego como un método </h2>
+
+    <script>
+        function miForEach(arr,callBack){
+            for (let i=0;i<arr.length;i++)
+                callBack(arr[i],i,arr);
+        }
+
+        let a = ["Bilbo", "Gandalf", "Nazgul"];
+
+        miForEach(a,(item, index, array) => {
+                        alert(`${item} está en el índice ${index} en ${array}`);
+                });
+    
+        a.miForEach = function (callBack){
+            for (let i=0;i<this.length;i++)
+                callBack(this[i],i,this);
+        };
+
+        a.miForEach((item, index, array) => {
+                        alert(`miForEach:${item} ESTÁ EN EL ÍNDICE ${index} EN ${array}`);
+                });
+        a.forEach((item, index, array) => {
+                        alert(`forEach original: ${item} ESTÁ EN EL ÍNDICE ${index} EN ${array}`);
+                })
+    </script>
+</body>
+</html>

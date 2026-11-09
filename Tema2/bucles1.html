@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practicamos con bucles</title>
+</head>
+<body>
+    <h1>Por la consola salen algunos resultados</h1>
+    <script>
+function divisores(n){
+    for (let i=1; i<=n; i++){
+        if (n%i==0) console.log(i);
+    }
+}
+
+function esPrimo(n){
+    let tope = n/2;
+    for (let i=2;i<tope;i++) {
+        //si es divisible por algún número no es primo
+        if (n%i==0) return false;
+    }
+    //si no es divisible por ningún número entre 2 y n-1, entonces es primo
+    return true;
+}
+
+console.log("Los divisores de 10 son: ");
+divisores(10);
+
+const primos=[];
+
+for (let i=2; i<200; i++){
+    if (esPrimo(i)) 
+        primos.push(i);
+}
+console.log("Los primos hasta el 200 son: ", primos)
+    </script>
+</body>
+</html>
